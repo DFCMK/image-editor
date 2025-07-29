@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 let image = new Image();
 
 document.getElementById("upload").addEventListener("change", function(event){
-    const file = event.target.file[0];
+    const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = function(e){
         image.src = e.target.result;
@@ -19,13 +19,13 @@ image.onload = function(){
     canvas.height = image.height;
 
     ctx.drawImage(image, 0, 0);
-    canvasContainer.computedStyleMap.display = 'block';
+    canvasContainer.style.display = 'block';
 }
 
 function applyFileters(){
     const brightness = document.getElementById("brightness").value;
     const contrast = document.getElementById("contrast").value;
-    const grayscale = document.getElementById("greyscale").value;
+    const grayscale = document.getElementById("grayscale").value;
 
     ctx.filter = `
     brightness(${brightness})
